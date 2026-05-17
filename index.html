@@ -578,70 +578,70 @@ footer p{font-size:12px;color:var(--txt3)}
 
 /* Mobile */
 @media (max-width: 600px) {
-  /* Keep horizontal layout on mobile — side by side */
+  /* Compact horizontal — rings hidden, logos proportional */
   .partnership-stage {
     flex-direction: row;
     align-items: center;
     justify-content: center;
     max-width: 100%;
     gap: 0;
-    padding: 0 8px;
+    padding: 0 4px;
+    margin-bottom: 28px;
   }
 
-  /* Bigger logos on mobile */
+  /* Hide decorative rings — too cluttered on small screens */
+  .p-logo-ring { display: none; }
+  .p-conn-orbit { display: none; }
+  .p-conn-pulse { display: none; }
+
+  /* Logo bubbles: compact */
+  .p-logo { gap: 8px; }
   .p-logo-inner {
-    width: 110px; height: 110px; border-radius: 32px;
+    width: 80px; height: 80px; border-radius: 24px;
+    box-shadow:
+      0 0 0 1px rgba(212,160,23,.1),
+      0 0 20px rgba(212,160,23,.2),
+      0 8px 24px rgba(0,0,0,.6),
+      inset 0 1px 0 rgba(255,255,255,.07);
   }
-  .p-logo-inner img { width: 72px; height: 72px; }
+  .p-logo-dazz .p-logo-inner {
+    box-shadow:
+      0 0 0 1px rgba(160,100,255,.12),
+      0 0 20px rgba(160,100,255,.18),
+      0 8px 24px rgba(0,0,0,.6),
+      inset 0 1px 0 rgba(255,255,255,.07);
+  }
+  .p-logo-inner img { width: 54px; height: 54px; }
 
-  /* Scale rings to match bigger logo */
-  .p-logo-ring.r1 { width: 134px; height: 134px; }
-  .p-logo-ring.r2 { width: 158px; height: 158px; }
-  .p-logo-ring.r3 { display: none; }
-
-  /* Label bigger and visible */
+  /* Label */
   .p-logo-label {
-    font-size: 13px; font-weight: 600;
-    color: var(--txt2); letter-spacing: .3px;
+    font-size: 12px; font-weight: 600;
+    color: var(--txt2); letter-spacing: .2px;
   }
 
-  /* Connector stays horizontal but more compact */
+  /* Connector: slim */
   .p-connector {
-    width: 100px; padding-bottom: 24px; flex-shrink: 0;
+    width: 72px; padding-bottom: 20px; flex-shrink: 0;
   }
   .p-conn-lines { flex-direction: row; }
   .p-conn-line.left {
     height: 1px; flex: 1; width: auto;
-    background: linear-gradient(to right, rgba(212,160,23,.08), rgba(212,160,23,.45));
+    background: linear-gradient(to right, rgba(212,160,23,.05), rgba(212,160,23,.4));
   }
   .p-conn-line.right {
     height: 1px; flex: 1; width: auto;
-    background: linear-gradient(to right, rgba(160,100,255,.45), rgba(160,100,255,.08));
+    background: linear-gradient(to right, rgba(160,100,255,.4), rgba(160,100,255,.05));
   }
-  .p-conn-line.left::after  { animation: energyFlow 2s var(--ios) infinite; }
-  .p-conn-line.right::after { animation: energyFlowRight 2s var(--ios) infinite .4s; }
+  .p-conn-line.left::after  { animation: energyFlow 2s var(--ios) infinite; width: 4px; height: 4px; }
+  .p-conn-line.right::after { animation: energyFlowRight 2s var(--ios) infinite .4s; width: 4px; height: 4px; }
 
-  /* Badge center */
-  .p-conn-badge {
-    padding: 8px 12px; gap: 3px;
-  }
-  .badge-x { font-size: 14px; }
-  .badge-text { font-size: 8px; letter-spacing: 1px; }
+  /* Badge */
+  .p-conn-badge { padding: 7px 10px; gap: 2px; border-radius: 12px; }
+  .badge-x { font-size: 13px; }
+  .badge-text { font-size: 7.5px; letter-spacing: .8px; }
 
-  /* Orbiting particles */
-  .p-conn-orbit { top: 42%; left: 50%; }
-  .p-conn-particle { width: 3px; height: 3px; }
-  @keyframes particleOrbitMobile {
-    0%   { transform: rotate(0deg) translateX(28px) rotate(0deg); opacity: .8; }
-    100% { transform: rotate(360deg) translateX(28px) rotate(-360deg); opacity: .8; }
-  }
-  .p-conn-particle { animation: particleOrbitMobile 4s linear infinite; }
-  .p-conn-particle.pa2 { animation-delay: -1s; }
-  .p-conn-particle.pa3 { animation-delay: -2s; }
-  .p-conn-particle.pa4 { animation-delay: -3s; }
-
-  /* Glow blobs bigger on mobile */
-  .p-logo-glow { width: 120px; height: 120px; }
+  /* Glow toned down */
+  .p-logo-glow { width: 80px; height: 80px; filter: blur(14px); }
 }
 
 </style>
