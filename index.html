@@ -578,23 +578,70 @@ footer p{font-size:12px;color:var(--txt3)}
 
 /* Mobile */
 @media (max-width: 600px) {
-  .partnership-stage { flex-direction: column; gap: 8px; max-width: 200px; }
-  .p-connector { width: 80px; padding-bottom: 0; padding-right: 0; }
-  .p-conn-lines { flex-direction: column; height: 60px; }
+  /* Keep horizontal layout on mobile — side by side */
+  .partnership-stage {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    gap: 0;
+    padding: 0 8px;
+  }
+
+  /* Bigger logos on mobile */
+  .p-logo-inner {
+    width: 110px; height: 110px; border-radius: 32px;
+  }
+  .p-logo-inner img { width: 72px; height: 72px; }
+
+  /* Scale rings to match bigger logo */
+  .p-logo-ring.r1 { width: 134px; height: 134px; }
+  .p-logo-ring.r2 { width: 158px; height: 158px; }
+  .p-logo-ring.r3 { display: none; }
+
+  /* Label bigger and visible */
+  .p-logo-label {
+    font-size: 13px; font-weight: 600;
+    color: var(--txt2); letter-spacing: .3px;
+  }
+
+  /* Connector stays horizontal but more compact */
+  .p-connector {
+    width: 100px; padding-bottom: 24px; flex-shrink: 0;
+  }
+  .p-conn-lines { flex-direction: row; }
   .p-conn-line.left {
-    width: 1px; height: 50%; flex: 1;
-    background: linear-gradient(to bottom, rgba(212,160,23,.08), rgba(212,160,23,.4));
+    height: 1px; flex: 1; width: auto;
+    background: linear-gradient(to right, rgba(212,160,23,.08), rgba(212,160,23,.45));
   }
   .p-conn-line.right {
-    width: 1px; height: 50%; flex: 1;
-    background: linear-gradient(to bottom, rgba(160,100,255,.4), rgba(160,100,255,.08));
+    height: 1px; flex: 1; width: auto;
+    background: linear-gradient(to right, rgba(160,100,255,.45), rgba(160,100,255,.08));
   }
-  .p-conn-line.left::after { animation: energyFlowDown 2s var(--ios) infinite; }
-  .p-conn-line.right::after { animation: energyFlowDownR 2s var(--ios) infinite .4s; }
-  @keyframes energyFlowDown { 0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0} }
-  @keyframes energyFlowDownR { 0%{bottom:0;top:auto;opacity:0}10%{opacity:1}90%{opacity:1}100%{bottom:100%;opacity:0} }
-  .p-conn-orbit { top: 50%; left: 50%; }
-  .p-logo-ring.r2, .p-logo-ring.r3 { display: none; }
+  .p-conn-line.left::after  { animation: energyFlow 2s var(--ios) infinite; }
+  .p-conn-line.right::after { animation: energyFlowRight 2s var(--ios) infinite .4s; }
+
+  /* Badge center */
+  .p-conn-badge {
+    padding: 8px 12px; gap: 3px;
+  }
+  .badge-x { font-size: 14px; }
+  .badge-text { font-size: 8px; letter-spacing: 1px; }
+
+  /* Orbiting particles */
+  .p-conn-orbit { top: 42%; left: 50%; }
+  .p-conn-particle { width: 3px; height: 3px; }
+  @keyframes particleOrbitMobile {
+    0%   { transform: rotate(0deg) translateX(28px) rotate(0deg); opacity: .8; }
+    100% { transform: rotate(360deg) translateX(28px) rotate(-360deg); opacity: .8; }
+  }
+  .p-conn-particle { animation: particleOrbitMobile 4s linear infinite; }
+  .p-conn-particle.pa2 { animation-delay: -1s; }
+  .p-conn-particle.pa3 { animation-delay: -2s; }
+  .p-conn-particle.pa4 { animation-delay: -3s; }
+
+  /* Glow blobs bigger on mobile */
+  .p-logo-glow { width: 120px; height: 120px; }
 }
 
 </style>
